@@ -5,7 +5,7 @@ https://github.com/pypa/sampleproject
 """
 
 # Always prefer setuptools over distutils
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Command
 import os
 # io.open is needed for projects that support Python 2.7
 # It ensures open() defaults to text mode with universal newlines,
@@ -25,6 +25,19 @@ with open(os.path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
+
+class CleanCommand(Command):
+    """Custom clean command to tidy up the project root."""
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        os.system('rm -vrf ./build ./dist ./*.pyc ./*.tgz ./*.egg-info')
 
 
 setup(
@@ -64,18 +77,6 @@ setup(
     # This field corresponds to the "Description" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#description-optional
     long_description=long_description,  # Optional
-
-    # Denotes that our long_description is in Markdown; valid values are
-    # text/plain, text/x-rst, and text/markdown
-    #
-    # Optional if long_description is written in reStructuredText (rst) but
-    # required for plain-text or Markdown; if unspecified, "applications should
-    # attempt to render [the long_description] as text/x-rst; charset=UTF-8 and
-    # fall back to text/plain if it is not valid rst" (see link below)
-    #
-    # This field corresponds to the "Description-Content-Type" metadata field:
-    # https://packaging.python.org/specifications/core-metadata/#description-content-type-optional
-    long_description_content_type='text/markdown',  # Optional (see note above)
 
     # This should be a valid link to your project's main homepage.
     #
@@ -131,7 +132,8 @@ setup(
     #
     #   py_modules=["my_module"],
     #
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),  # Required
+    packages=find_packages(
+        exclude=['contrib', 'docs', 'tests', 'testfiles']),  # Required
 
     # This field lists other packages that your project depends on to run.
     # Any package you put here will be installed by pip when your project is
@@ -179,10 +181,13 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'hawkewy=__main__:main'
+            'hawkeye=hawkeye.__main__:main'
         ],
     },
 
+    cmdclass={
+        'clean': CleanCommand,
+    },
     # List additional URLs that are relevant to your project as a dict.
     #
     # This field corresponds to the "Project-URL" metadata fields:

@@ -5,7 +5,7 @@ import os
 import gi
 import sys
 import logging
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, Gio
 
 from hawkeye.views.pdf import PdfViewer
 from hawkeye.views.markdown import MarkdownViewer
@@ -26,21 +26,44 @@ class MainWindow(Gtk.Window):
 
         self.logger.info("Launching application")
 
+        self.build_ui(options)
+        self.connect_signals()
+
+    def build_ui(self, options={}):
+        """ Function that creates the base UI of the application """
+
         self.set_title("hawkeye")
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_keep_above(options.top)
         self.set_default_size(options.width, options.height)
-        self.connect("key-press-event", self.on_key_pressed)
+        self.set_skip_taskbar_hint(True)
+        # This hides, minimize and maximize buttons.
+        self.set_type_hint(Gdk.WindowTypeHint.DIALOG)
+        self.hb = Gtk.HeaderBar()
+        self.hb.set_show_close_button(True)
+        self.hb.props.title = "Hawkeye"
+
+        button = Gtk.Button()
+        icon = Gio.ThemedIcon(name="mail-send-receive-symbolic")
+        image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON)
+        button.add(image)
+        self.hb.pack_end(button)
+
+        self.set_titlebar(self.hb)
 
         self.scrolled_window = Gtk.ScrolledWindow()
 
-        view = self.build_view(options.uri)
+        view = self.build_file_viewer(options.uri)
 
         self.scrolled_window.add(view)
 
         self.add(self.scrolled_window)
 
-    def build_view(self, uri):
+    def connect_signals(self):
+        """ Register event handlers """
+        self.connect("key-press-event", self.on_key_pressed)
+
+    def build_file_viewer(self, uri):
         """ Builds the view based on the file type """
         ext = os.path.splitext(uri)[-1].lower()
 
