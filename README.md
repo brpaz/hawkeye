@@ -1,6 +1,10 @@
-# Hawkeye - Linux File Previewer
+# Hawkeye - Quick previewer for Linux
 
-> GTK Application to quicly preview PDFs, Markkown Files, Images and Websites in a simple window, somewhat inspired by MacOS [quicklook](https://support.apple.com/kb/ph25575?locale=en_US)
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+![License](https://img.shields.io/github/license/brpaz/hawkeye.svg)
+![Requires.io](https://img.shields.io/requires/github/brpaz/hawkeye.svg)
+
+> Hawkeye is a GTK Application that allow to quickly open PDFs, Markkown Files, Images and Websites in a "simple" window, somewhat inspired by MacOS [quicklook](https://support.apple.com/kb/ph25575?locale=en_US)
 
 ## Motivation
 
@@ -16,6 +20,7 @@ Thats when the idea of Hawkeye come from.
     * Websites / HTML and other web files that can be displayed inside a Webview.
 * Command line tool makes easy to integrate with other applications.
 * Application window contains only the basic elements to display the file.
+* Search function allows you to search in the displayed content.
 
 ## Requirements
 
@@ -25,7 +30,7 @@ Thats when the idea of Hawkeye come from.
 
 ## Install
 
-For now only "setup.py" is supported. I would like to provide flatpak, snap, deb support in the future. If you know how to package Python apps in these formats, PRs are welcome ;)
+For now the only way to install this application is installing from source. I would like to provide flatpak, snap, deb support in the future. If you know how to package Python apps in these formats, PRs are welcome ;)
 
 ```python setup.py install```
 
@@ -39,18 +44,17 @@ Where the uri parameter is the path to the file you want to open.
 
 "http" and "file" protocols are supported. For PDF files only local files are supported.
 
-You can pass additional parameters to the command. type "hawkeye -h" to see the available commands.
+You can pass additional arguments to the command. type "hawkeye -h" to see the available arguments.
 
 ## FAQ
 
 ### How does hawkeye compares with gnome-sushi?
 
-* [Gnome sushi](https://github.com/GNOME/sushi) is a quick previewer for Nautilus, the GNOME desktop file manager. It allows to preview the most popular file types just by typing the "spacebar" on the file explorer. Hawkeye aims for a more specific use cases, where you need to integrate with other apps, thus being a command line tool. Also it is more that a previewer as it allows zooming for example. This project doesnt want to be a replacement to gnome sushi and both can be used togeher for the ultimate killer workflow.
+* [Gnome sushi](https://github.com/GNOME/sushi) is a quick previewer for Nautilus, the GNOME desktop file manager. It allows to preview the most popular file types just by typing the "space bar" on the file manager and supports many file types. Hawkeye aims for a more specific use case, outside of the file manager scope, where you need to integrate with other apps, thus being a command line tool. Also it is more that a previewer as it allows zooming and searching for example. This project doesnt want to be a replacement to gnome sushi and both can be used togeher for the ultimate killer workflow.
 
 ## TODO
 
-- Markdown preview css (margin, code blocks and colors)
-- PDF copy text
+-
 
 
 ## Contributing

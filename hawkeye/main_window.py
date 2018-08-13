@@ -13,8 +13,7 @@ from hawkeye.viewer.default import DefaultViewer
 
 gi.require_version('Gtk', '3.0')
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 class MainWindow(Gtk.Window):
     """ Main window for the application """
@@ -41,6 +40,7 @@ class MainWindow(Gtk.Window):
         self.set_default_size(options.width, options.height)
         self.set_skip_taskbar_hint(True)
 
+        # header bar
         self.hb = Gtk.HeaderBar()
         self.hb.set_show_close_button(True)
         self.hb.props.title = "Hawkeye"
@@ -48,20 +48,19 @@ class MainWindow(Gtk.Window):
         self.btn_open_default = Gtk.Button()
         self.btn_open_default.set_label("Open in Default Application")
         self.hb.pack_end(self.btn_open_default)
-
         self.set_titlebar(self.hb)
 
-        self.scrolled_window = Gtk.ScrolledWindow()
-
+        # viewer that will display the file.
         self.viewer = self.build_file_viewer(options.uri)
 
+        self.scrolled_window = Gtk.ScrolledWindow()
         self.scrolled_window.add(self.viewer)
 
         self.add(self.scrolled_window)
 
     def connect_signals(self):
         """ Register event handlers """
-        self.connect("key-press-event", self.on_key_pressed)
+        self.connect("key-press-event", self.on_key_press)
         self.btn_open_default.connect(
             "button-press-event", self.on_open_in_default_app_btn_pressed)
         # when navigating out of the previewer, close the application
@@ -83,7 +82,7 @@ class MainWindow(Gtk.Window):
         self.logger.info("Opening File %s using Default Viewer", uri)
         return DefaultViewer(uri)
 
-    def on_key_pressed(self, widget, event):
+    def on_key_press(self, widget, event):
         """ handles key press events """
 
         # close the application on "ESC" key

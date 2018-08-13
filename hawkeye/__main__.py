@@ -15,7 +15,7 @@ def main():
     # parse options
     parser = argparse.ArgumentParser(description='Hawkeye')
     parser.add_argument("--uri", required=True,
-                        help="the file or website to display")
+                        help="The uri for the file or website to display")
     parser.add_argument("--width", help="the window width", default=1024)
     parser.add_argument("--height", help="the window height", default=768)
     parser.add_argument(

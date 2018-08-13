@@ -6,6 +6,7 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('EvinceView', '3.0')
 gi.require_version('EvinceDocument', '3.0')
 
+from hawkeye.ui.search_bar import SearchBar
 from gi.repository import Gtk, Gdk, Gio, EvinceDocument, EvinceView, GObject
 
 
@@ -24,26 +25,22 @@ class PdfViewer(Gtk.VBox):
         self.searched_text = ""
         self.find_job = None
 
-        self.build_search_bar()
-        self.build_pdf_view()
+        EvinceDocument.init()
 
+        self.build_ui()
         self.connect_signals()
-
-        self.scrolled_window = Gtk.ScrolledWindow()
-        self.scrolled_window.add(self.view)
-        self.pack_start(self.search_bar, False, False, 0)
-        self.pack_start(self.scrolled_window, True, True, 0)
-        self.show_all()
 
     def connect_signals(self):
         """ Connect signals """
         self.connect("key-press-event", self.on_key_press)
         self.view.connect("external-link", self.on_link_click)
 
-    def build_pdf_view(self):
-        """ Builds the PDF document """
 
-        EvinceDocument.init()
+    def build_ui(self):
+        """ Builds the UI widgets """
+        self.search_bar = SearchBar()
+        self.search_bar.set_key_press_handler(self.on_search)
+
         self.view = EvinceView.View()
         self.doc = EvinceDocument.Document.factory_get_document(self.uri)
 
@@ -52,16 +49,11 @@ class PdfViewer(Gtk.VBox):
 
         self.view.set_model(model)
 
-    def build_search_bar(self):
-        """ builds the SearchBar widget """
-        self.search_entry = Gtk.SearchEntry(max_width_chars=45)
-        self.search_entry.connect("key-press-event", self.on_search)
-
-        self.search_bar = Gtk.SearchBar()
-        self.search_bar.set_search_mode(False)
-        self.search_bar.connect_entry(self.search_entry)
-        self.search_bar.add(self.search_entry)
-        self.search_bar.set_show_close_button(True)
+        self.scrolled_window = Gtk.ScrolledWindow()
+        self.scrolled_window.add(self.view)
+        self.pack_start(self.search_bar, False, False, 0)
+        self.pack_start(self.scrolled_window, True, True, 0)
+        self.show_all()
 
     def on_search(self, widget, event):
         """ Perform a search"""
