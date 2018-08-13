@@ -1,7 +1,7 @@
 """ Default view, uses a Webview """
 
 import gi
-from gi.repository import Gtk, Gdk, WebKit2 as webkit
+from gi.repository import GObject, Gtk, Gdk, WebKit2 as webkit
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('WebKit2', '4.0')
@@ -9,6 +9,11 @@ gi.require_version('WebKit2', '4.0')
 
 class DefaultViewer(webkit.WebView):
     """ Displays the file inside a webview. This is the default behaviour """
+
+    __gsignals__ = {
+        'external-naviagtion': (GObject.SIGNAL_RUN_LAST, None,
+                                ())
+    }
 
     def __init__(self, uri):
         """ constructor """

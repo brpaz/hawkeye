@@ -47,6 +47,12 @@ You can pass additional parameters to the command. type "hawkeye -h" to see the 
 
 * [Gnome sushi](https://github.com/GNOME/sushi) is a quick previewer for Nautilus, the GNOME desktop file manager. It allows to preview the most popular file types just by typing the "spacebar" on the file explorer. Hawkeye aims for a more specific use cases, where you need to integrate with other apps, thus being a command line tool. Also it is more that a previewer as it allows zooming for example. This project doesnt want to be a replacement to gnome sushi and both can be used togeher for the ultimate killer workflow.
 
+## TODO
+
+- Markdown preview css (margin, code blocks and colors)
+- PDF copy text
+
+
 ## Contributing
 
 All contributions are welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
