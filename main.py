@@ -1,3 +1,5 @@
-""" Import the main module of the application """
+# pylint: skip-file
 
-import hawkeye.__main__  # pylint: disable=W0611
+from hawkeye.__main__ import *
+
+main()

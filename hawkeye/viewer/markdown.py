@@ -4,7 +4,6 @@ import os
 import gi
 
 from markdown import Markdown
-from urllib.parse import urlparse
 from urllib.request import urlopen
 
 gi.require_version('Gtk', '3.0')
@@ -24,10 +23,11 @@ class MarkdownViewer(Gtk.VBox):
 
     def __init__(self, uri):
         """ constructor """
-        super(MarkdownViewer, self).__init__()
+        super().__init__()
 
         self.uri = uri
         self.build_ui()
+        self.connect_signals()
         self.load_assets()
 
         html = self.convert_markdown()
@@ -70,7 +70,7 @@ class MarkdownViewer(Gtk.VBox):
         if event.state & accel_mask == Gdk.ModifierType.CONTROL_MASK and event.keyval == Gdk.KEY_f:
             if self.search_bar.get_search_mode():
                 self.search_bar.set_search_mode(False)
-                self.search_entry.set_text("")
+                self.search_bar.set_text("")
             else:
                 self.search_bar.set_search_mode(True)
 
@@ -113,7 +113,8 @@ class MarkdownViewer(Gtk.VBox):
     def on_decide_policy(self, webview, decision, decision_type):
         """ Intercepts requests """
         # Always opens external links in external application.
-        # This behaviour might change, after more time using this on daily basis.
+        # This behaviour might change, after more time using this on daily
+        # basis.
         if decision_type == WebKit.PolicyDecisionType.NAVIGATION_ACTION:
             Gio.AppInfo.launch_default_for_uri(
                 decision.get_request().get_uri())

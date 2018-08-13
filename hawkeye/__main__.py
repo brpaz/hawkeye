@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+""" Hawkeye module """
 import argparse
 import gi
+from hawkeye.main_window import MainWindow
 
 gi.require_version('Gtk', '3.0')
 
-from gi.repository import Gtk
-from hawkeye.main_window import MainWindow
+from gi.repository import Gtk  # pylint: disable=C0412
 
 
 def main():
@@ -32,4 +33,5 @@ def main():
     Gtk.main()
 
 
-main()
+if __name__ == '__main__':
+    main()

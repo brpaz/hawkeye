@@ -1,1 +1,2 @@
 include hawkeye/assets/**/*
+include hawkeye/assets/*

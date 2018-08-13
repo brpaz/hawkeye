@@ -35,7 +35,6 @@ class PdfViewer(Gtk.VBox):
         self.connect("key-press-event", self.on_key_press)
         self.view.connect("external-link", self.on_link_click)
 
-
     def build_ui(self):
         """ Builds the UI widgets """
         self.search_bar = SearchBar()
@@ -83,12 +82,12 @@ class PdfViewer(Gtk.VBox):
             return
 
         self.find_job = EvinceView.JobFind.new(document=self.doc, start_page=0,
-                                        n_pages=self.doc.get_n_pages(),
-                                        text=text, case_sensitive=False)
+                                               n_pages=self.doc.get_n_pages(),
+                                               text=text, case_sensitive=False)
 
         self.view.find_started(self.find_job)
         EvinceView.Job.scheduler_push_job(self.find_job,
-                                    EvinceView.JobPriority.PRIORITY_NONE)
+                                          EvinceView.JobPriority.PRIORITY_NONE)
 
         self.view.find_set_highlight_search(True)
 

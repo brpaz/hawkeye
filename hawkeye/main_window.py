@@ -2,9 +2,9 @@
 """ hawkeye """
 
 import os
-import gi
 import sys
 import logging
+import gi
 from gi.repository import Gtk, Gdk, Gio
 
 from hawkeye.viewer.pdf import PdfViewer
@@ -42,14 +42,14 @@ class MainWindow(Gtk.Window):
         self.set_skip_taskbar_hint(True)
 
         # header bar
-        self.hb = Gtk.HeaderBar()
-        self.hb.set_show_close_button(True)
-        self.hb.props.title = "Hawkeye"
+        self.header_bar = Gtk.HeaderBar()
+        self.header_bar.set_show_close_button(True)
+        self.header_bar.props.title = "Hawkeye"
 
         self.btn_open_default = Gtk.Button()
         self.btn_open_default.set_label("Open in Default Application")
-        self.hb.pack_end(self.btn_open_default)
-        self.set_titlebar(self.hb)
+        self.header_bar.pack_end(self.btn_open_default)
+        self.set_titlebar(self.header_bar)
 
         # viewer that will display the file.
         self.viewer = self.build_file_viewer(options.uri)
@@ -83,7 +83,7 @@ class MainWindow(Gtk.Window):
         self.logger.info("Opening File %s using Default Viewer", uri)
         return DefaultViewer(uri)
 
-    def on_key_press(self, widget, event):
+    def on_key_press(self, widget, event):  # pylint: disable=W0613
         """ handles key press events """
 
         # close the application on "ESC" key

@@ -17,14 +17,12 @@ class DefaultViewer(webkit.WebView):
 
     def __init__(self, uri):
         """ constructor """
-        super(DefaultViewer, self).__init__()
+        super().__init__()
 
         websettings = self.get_settings()
         websettings.set_allow_modal_dialogs(False)
         websettings.set_property("enable-plugins", True)
         websettings.set_property("enable-java", False)
-        websettings.set_property(
-            "user-agent", "Mozilla/5.0 (Linux; Android 7.0; SM-G892A Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36")
         websettings.set_zoom_text_only(False)
 
         self.load_uri(uri)
