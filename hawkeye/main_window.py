@@ -15,6 +15,7 @@ gi.require_version('Gtk', '3.0')
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 class MainWindow(Gtk.Window):
     """ Main window for the application """
 
@@ -34,7 +35,7 @@ class MainWindow(Gtk.Window):
 
         self.set_title("Hawkeye")
         self.set_icon_from_file(os.path.dirname(
-            __file__) + "/../assets/icon.png")
+            __file__) + "/assets/icon.png")
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_keep_above(options.top)
         self.set_default_size(options.width, options.height)

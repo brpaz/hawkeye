@@ -13,6 +13,7 @@ gi.require_version('WebKit2', '4.0')
 from gi.repository import GObject, Gtk, Gdk, Gio, WebKit2 as WebKit
 from hawkeye.ui.search_bar import SearchBar
 
+
 class MarkdownViewer(Gtk.VBox):
     """ Displays the file inside a webview """
 
@@ -67,11 +68,11 @@ class MarkdownViewer(Gtk.VBox):
         # Show finder search bar on CTRL-F
         # TODO this should be moved to Main window.
         if event.state & accel_mask == Gdk.ModifierType.CONTROL_MASK and event.keyval == Gdk.KEY_f:
-          if self.search_bar.get_search_mode():
-            self.search_bar.set_search_mode(False)
-            self.search_entry.set_text("")
-          else:
-            self.search_bar.set_search_mode(True)
+            if self.search_bar.get_search_mode():
+                self.search_bar.set_search_mode(False)
+                self.search_entry.set_text("")
+            else:
+                self.search_bar.set_search_mode(True)
 
     def on_search(self, widget, event):
         """ Do a search on enter key """
@@ -92,7 +93,7 @@ class MarkdownViewer(Gtk.VBox):
     def load_assets(self):
         """ Injects css and js files into the webview """
 
-        assets_path = os.path.join(os.path.dirname(__file__), '..', '..', 'assets')
+        assets_path = os.path.join(os.path.dirname(__file__), '..', 'assets')
 
         with open(os.path.join(assets_path, 'css', 'markdown.css'), encoding='utf-8') as f:
             style_contents = f.read()

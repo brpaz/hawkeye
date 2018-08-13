@@ -135,6 +135,7 @@ setup(
     packages=find_packages(
         exclude=['contrib', 'docs', 'tests', 'testfiles']),  # Required
 
+    include_package_data=True,
     # This field lists other packages that your project depends on to run.
     # Any package you put here will be installed by pip when your project is
     # installed, so they must be valid existing projects.
@@ -164,6 +165,7 @@ setup(
     # package_data={  # Optional
     #    'sample': ['package_data.dat'],
     # },
+
 
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:

@@ -13,7 +13,7 @@ from hawkeye.main_window import MainWindow
 def main():
     """ Application entrypoint """
     # parse options
-    parser = argparse.ArgumentParser(description='Hawkeye')
+    parser = argparse.ArgumentParser(description='File viewer')
     parser.add_argument("--uri", required=True,
                         help="The uri for the file or website to display")
     parser.add_argument("--width", help="the window width", default=1024)
