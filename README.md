@@ -9,7 +9,7 @@
 
 ## Motivation
 
-Many times when working, I feel the need to quickly look up some documentation website or cheatsheet, while minimizing the context switching required to open a full web browser or file. Also tradiional browser have many elements like tabs, search bar, extensions, etc that take a lot of space and make it harder to have a full browser window open side by side with your IDE. Besides, I also wanted to be able to "preview" content inside [ulauncher](https://ulauncher.io/) and some extensions I have been working on like [ulauncher-cheat-sheets](https://github.com/brpaz/ulauncher-cheat-sheets).
+Many times when working, I feel the need to quickly look up some documentation website or cheatsheet, while minimizing the context switching required to open a full web browser or file. Also tradiional browser have many elements like tabs, search bar, extensions, etc that take a lot of space and make it harder to have a full browser window open side by side with your IDE. Besides, I also wanted to be able to "preview" content inside [ulauncher](https://ulauncher.io/) and some extensions I have been working on like [ulauncher-cheat-sheets](https://github.com/brpaz/ulauncher-cheats).
 
 Thats when the idea of Hawkeye come from.
 
