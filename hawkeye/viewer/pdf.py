@@ -105,7 +105,7 @@ class PdfViewer(Gtk.VBox):
         if event.state & accel_mask == Gdk.ModifierType.CONTROL_MASK and event.keyval == Gdk.KEY_f:
             if self.search_bar.get_search_mode():
                 self.search_bar.set_search_mode(False)
-                self.search_entry.set_text("")
+                self.search_bar.set_text("")
             else:
                 self.search_bar.set_search_mode(True)
 

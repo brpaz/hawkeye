@@ -77,11 +77,11 @@ class MarkdownViewer(Gtk.VBox):
     def on_search(self, widget, event):
         """ Do a search on enter key """
 
-        if event.keyval != Gdk.KEY_Return:
+        if event.keyval != Gdk.KEY_Return or widget.get_text() == "":
             return
 
         script = """
-            var res = window.find("%s")
+            var res = window.find("%s", false, false, true, false, false, true)
             if (!res) {
                 alert("No results found!")
             }
