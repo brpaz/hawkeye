@@ -1,10 +1,11 @@
-# Hawkeye - Quick previewer for Linux
+# Hawkeye
+
+> Hawkeye is a command line GTK Application that allow to quickly open PDFs, Markkown Files, Images and Websites in a "small" window, somewhat inspired by MacOS [quicklook](https://support.apple.com/kb/ph25575?locale=en_US).
+
 
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 ![License](https://img.shields.io/github/license/brpaz/hawkeye.svg)
 ![Requires.io](https://img.shields.io/requires/github/brpaz/hawkeye.svg)
-
-> Hawkeye is a command line GTK Application that allow to quickly open PDFs, Markkown Files, Images and Websites in a "small" window, somewhat inspired by MacOS [quicklook](https://support.apple.com/kb/ph25575?locale=en_US).
 
 ## Motivation
 
