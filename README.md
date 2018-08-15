@@ -15,11 +15,11 @@ Thats when the idea of Hawkeye come from.
 ## Main features
 
 * Supports most common file types:
-    * PDF files (using Evince),
-    * Markdown files,
-    * Websites / HTML and other web files that can be displayed inside a Webview.
+    * PDF files
+    * Markdown files
+    * Websites / HTML and other web files that can be displayed inside a Webview
 * Command line tool makes easy to integrate with other applications.
-* Application window contains only the basic elements to display the file.
+* Application window contains only the basic elements to display the file making it easy to have windows side by side or on top.
 * Search function allows you to search in the displayed content.
 
 ## Requirements
@@ -32,7 +32,7 @@ Thats when the idea of Hawkeye come from.
 
 For now the only way to install this application is installing from source. I would like to provide flatpak, snap, deb support in the future. If you know how to package Python apps in these formats, PRs are welcome ;)
 
-```python setup.py install```
+```make install```
 
 ## Usage
 
@@ -46,15 +46,13 @@ Where the uri parameter is the path to the file you want to open.
 
 You can pass additional arguments to the command. type "hawkeye -h" to see the available arguments.
 
+---
+
 ## FAQ
 
-### How does hawkeye compares with gnome-sushi?
+### How does Hawkeye compares with gnome-sushi?
 
 * [Gnome sushi](https://github.com/GNOME/sushi) is a quick previewer for Nautilus, the GNOME desktop file manager. It allows to preview the most popular file types just by typing the "space bar" on the file manager and supports many file types. Hawkeye aims for a more specific use case, outside of the file manager scope, where you need to integrate with other apps, thus being a command line tool. Also it is more that a previewer as it allows zooming and searching for example. This project doesnt want to be a replacement to gnome sushi and both can be used togeher for the ultimate killer workflow.
-
-## TODO
-
--
 
 
 ## Contributing
