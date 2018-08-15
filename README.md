@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/github/license/brpaz/hawkeye.svg)
 ![Requires.io](https://img.shields.io/requires/github/brpaz/hawkeye.svg)
 
-> Hawkeye is a GTK Application that allow to quickly open PDFs, Markkown Files, Images and Websites in a "simple" window, somewhat inspired by MacOS [quicklook](https://support.apple.com/kb/ph25575?locale=en_US)
+> Hawkeye is a command line GTK Application that allow to quickly open PDFs, Markkown Files, Images and Websites in a "small" window, somewhat inspired by MacOS [quicklook](https://support.apple.com/kb/ph25575?locale=en_US).
 
 ## Motivation
 
@@ -27,6 +27,8 @@ Thats when the idea of Hawkeye come from.
 * Python 3 (with all the dependencies specified in the [requirements.txt](requirements.txt) file.)
 * GTK
 * [Evince](https://wiki.gnome.org/Apps/Evince) (for PDF files display)
+
+This was only tested in Ubuntu 18.04 but it should work in other OSes that meets the above requirements.
 
 ## Install
 
