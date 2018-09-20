@@ -28,6 +28,7 @@ Thats when the idea of Hawkeye come from.
 * Python 3 (with all the dependencies specified in the [requirements.txt](requirements.txt) file.)
 * GTK
 * [Evince](https://wiki.gnome.org/Apps/Evince) (for PDF files display)
+* GI Evince bindings - install with `sudo apt-get install gir1.2-evince-3`
 
 This was only tested in Ubuntu 18.04 but it should work in other OSes that meets the above requirements.
 
